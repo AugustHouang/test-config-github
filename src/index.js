@@ -1,13 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './views/App';
-import reportWebVitals from './reportWebVitals';
-import './styles/global.scss';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import M from "materialize-css";
+import "materialize-css/dist/css/materialize.min.css";
+import reportWebVitals from "./reportWebVitals";
+import { ThemeProvider } from "./components/themcolor/ThemeContext";
+import { BrowserRouter } from "react-router-dom";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <ThemeProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </ThemeProvider>
   </React.StrictMode>
 );
 
