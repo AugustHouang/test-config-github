@@ -1,21 +1,39 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import "./index.css";
-import App from "./App";
-import M from "materialize-css";
-import "materialize-css/dist/css/materialize.min.css";
-import reportWebVitals from "./reportWebVitals";
-import { ThemeProvider } from "./components/themcolor/ThemeContext";
-import { BrowserRouter } from "react-router-dom";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+import M from 'materialize-css'
+import 'materialize-css/dist/css/materialize.min.css'
+import { BrowserRouter } from 'react-router-dom';
+import { AuthContextProvider } from './components/Context API/AuthContext';
+import "@fontsource/roboto";
+import { createTheme, ThemeProvider } from '@mui/material';
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#F8F3E9"
+    }, 
+    secondary: {
+      main: "#333"
+    },
+    third: {
+      main: "#FCF9F3"
+    }
+  }
+})
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ThemeProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+    <AuthContextProvider>
+    <BrowserRouter>
+    <ThemeProvider theme={theme}>
+    <App />
     </ThemeProvider>
+    </BrowserRouter>
+    </AuthContextProvider>
   </React.StrictMode>
 );
 
